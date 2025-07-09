@@ -1,6 +1,13 @@
+# Mock Resource class
+class Resource:
+    def __init__(self, name):
+        self.name = name
 
-from labgrid.resource.common import Resource
-from labgrid.factory import target_factory
+# Mock decorator
+def target_factory_decorator(cls):
+    return cls
+
+target_factory = type('factory', (), {'reg_resource': target_factory_decorator})
 
 @target_factory.reg_resource
 class SupportToolRESTDevice(Resource):
